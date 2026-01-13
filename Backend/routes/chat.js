@@ -19,4 +19,47 @@ router.post("/test", async (req, res) => {
   }
 });
 
+//get all threads
+router.get("/thread", async (req, res) => {
+  try {
+    const threads = await Thread.find({}).sort({ UpdatedAt: -1 });
+    //desending order  of UpdateAt.... most recent data would upload at top
+    res.json(threads);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch threads" });
+  }
+});
+
+//get specific thread by id
+router.get("/thread/:threadId", async (req, res) => {
+  const { threadId } = req.params;
+  try {
+    const thread = await Thread.find({ threadId });
+
+    if (!thread) {
+      res.status(404).json({ error: "Thread no found" });
+    }
+    res.json(thread.messages);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch chats" });
+  }
+});
+
+router.delete("/thread/:threadId", async (req, res) => {
+  const { threadId } = req.params;
+  try {
+    const deletedThread = await Thread.findOneAndDelete({ threadId });
+
+    if (!deletedThread) {
+      res.status(404).json({ error: "Thread no deleted" });
+    }
+    res.status(200).json({ success: "Thread deleted successfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "failed to delete thread" });
+  }
+});
+
 export default router;
