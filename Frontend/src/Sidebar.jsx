@@ -5,16 +5,22 @@ function Sidebar() {
     <section>
       {/* new chat button*/}
       <button>
-        <img src="src/assets/blacklogo.png" alt="gpt logo"></img>
-        <i className="fa-solid fa-pen-to-square"></i>
+        <img
+          src="src/assets/blacklogo.png"
+          alt="gpt logo"
+          className="logo"
+        ></img>
+        <span>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </span>
       </button>
 
       {/*History*/}
 
       <ul className="history">
-        <li>history 1</li>
-        <li>history 2</li>
-        <li>history 3</li>
+        <li>Thread 1</li>
+        <li>Thread 2</li>
+        <li>Thread 3</li>
       </ul>
 
       {/* sign */}
