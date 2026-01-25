@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="app">
       <MyContext.Provider value={providerValues}>
-        <Sidebar />
-        <ChatWindow />
+        <Sidebar></Sidebar>
+        <ChatWindow></ChatWindow>
       </MyContext.Provider>
     </div>
   );
