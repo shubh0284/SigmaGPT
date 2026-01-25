@@ -2,7 +2,7 @@ import "./Sidebar.css";
 
 function Sidebar() {
   return (
-    <section>
+    <section className="sidebar">
       {/* new chat button*/}
       <button>
         <img

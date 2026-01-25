@@ -1,4 +1,5 @@
 import "./ChatWindow.css";
+import Chat from "./Chat.jsx";
 
 function ChatWindow() {
   return (
