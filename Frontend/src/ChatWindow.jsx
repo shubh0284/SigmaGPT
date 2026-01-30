@@ -2,6 +2,7 @@ import "./ChatWindow.css";
 import Chat from "./Chat.jsx";
 import { MyContext } from "./MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
+import { ScaleLoader } from "react-spinners";
 
 function ChatWindow() {
   const {
@@ -13,10 +14,11 @@ function ChatWindow() {
     setPrevChats,
     setNewChat,
   } = useContext(MyContext);
-
+  const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const getReply = async () => {
+    setLoading(true);
     setNewChat(false);
 
     console.log("message ", prompt, " threadId ", currThreadId);
@@ -39,6 +41,7 @@ function ChatWindow() {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
 
   //Append new chat to prevChats
@@ -90,6 +93,8 @@ function ChatWindow() {
         </div>
       )}
       <Chat></Chat>
+
+      <ScaleLoader color="#fff" loading={loading}></ScaleLoader>
 
       <div className="chatInput">
         <div className="inputBox">
