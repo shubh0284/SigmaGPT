@@ -23,3 +23,7 @@
   max-width: 500px;
   width: fit-content;
 }
+
+.hljs {
+  border-radius: 14px !important;
+}
